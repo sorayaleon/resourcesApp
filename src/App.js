@@ -1,8 +1,12 @@
+import React from 'react';
 import './App.css';
+import Links from './components/Links';
 
 function App() {
     return (
-        <h1>Hellow world</h1>
+        <div>
+            <Links/>
+        </div>
     );
 }
 
