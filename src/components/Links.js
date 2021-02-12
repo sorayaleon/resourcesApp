@@ -40,20 +40,30 @@ const Links = () => {
         getLinks();
     }, []);
 
-    return <div>
-        <LinkForm {...{addOrEditLink, currentId, links}}/>
-        <div>
-            {links.map(link => (
-                <div key={link.id}>
-                    <div>
-                        <h4>{link.websitename}</h4>
-                        <p onClick={() => onDeleteLink(link.id)}>Close</p>
-                        <p onClick={() => setCurrentId(link.id)}>Edit</p>
+    return <div className="container my-5">
+        <div className="columns is-multiline">
+            <div className="column is-6-tablet">
+                <LinkForm {...{addOrEditLink, currentId, links}}/>
+            </div>
+            <div className="column is-6-tablet">
+                {links.map(link => (
+                    <div className="card mb-4" key={link.id}>
+                        <div className="card-header">
+                            <h4 className="card-header-title">{link.websitename}</h4>
+                            <i className="material-icons card-header-icon" onClick={() => onDeleteLink(link.id)}>
+                                close
+                            </i>
+                            <i className="material-icons card-header-icon" onClick={() => setCurrentId(link.id)}>
+                                create
+                            </i>
+                        </div>
+                        <div className="card-content">
+                            <p>{link.description}</p>
+                            <a href={link.url} target='_blank' rel="noreferrer">Go to website</a>
+                        </div>
                     </div>
-                    <p>{link.description}</p>
-                    <a href={link.url} target='_blank' rel="noreferrer">Go to website</a>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     </div>
 }

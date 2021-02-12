@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { db } from '../firebase';
+import '../../node_modules/bulma/css/bulma.css';
 
 const LinkForm = (props) => {
     const initialStateValues = {
@@ -51,16 +52,25 @@ const LinkForm = (props) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <input type="text" placeholder="https://sorayaleongonzalez.es" name="url" onChange= {handleInputChange} value={values.url}/>
+            <div className="field">
+                <label class="label">Url</label>
+                <div class="control">
+                    <input className="input" type="text" placeholder="https://sorayaleongonzalez.es" name="url" onChange= {handleInputChange} value={values.url}/>
+                </div>
             </div>
-            <div>
-                <input type="text" placeholder="Website name" name="websitename" onChange= {handleInputChange} value={values.websitename}/>
+            <div className="field">
+                <label class="label">Website</label>
+                <div class="control">
+                    <input className="input" type="text" placeholder="Website name" name="websitename" onChange= {handleInputChange} value={values.websitename}/>
+                </div>
             </div>
-            <div>
-                <textarea name="description"rows="10" placeholder="Write a description" onChange= {handleInputChange} value={values.description}></textarea>
+            <div className="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <textarea class="textarea" name="description"rows="10" placeholder="Write a description" onChange= {handleInputChange} value={values.description}></textarea>
+                </div>
             </div>
-            <button>
+            <button class="button is-primary">
                 {props.currentId === '' ? 'Save' : 'Update'}
             </button>
         </form>
